@@ -1,0 +1,158 @@
+#include <stdbool.h>
+#include <stdio.h>
+
+void exibirMenu();
+void cadastrar_aluno();
+// Função para exibir o menu de opções
+void exibirMenu() {
+  printf("\nSelecione uma opcao:\n");
+  printf("1 - Cadastrar aluno\n");
+  printf("2 - Remover aluno\n");
+  printf("3 - Atualizar dados de um aluno\n");
+  printf("4 - Listar alunos cadastrados\n");
+  printf("5 - Listar alunos aprovados\n");
+  printf("6 - Listar alunos reprovados por media\n");
+  printf("7 - Listar alunos reprovados por faltas\n");
+  printf("8 - Sair\n");
+}
+
+
+int main() {
+
+#define MAX_ALUNOS 30
+#define NUM_AULAS 36
+
+  int n_alunos = 0;
+  int matriculas[MAX_ALUNOS];
+  int faltas[MAX_ALUNOS];
+  float notas[MAX_ALUNOS][4];
+  int opcao;
+
+
+  // estrutura para armazenar informações do aluno
+  struct Aluno {
+    int matricula;
+    float notas[NUM_AULAS];
+    int faltas[NUM_AULAS];
+  };
+  // Função para exibir o menu de opções
+  exibirMenu();
+  printf("\nQual opção você deseja ver/fazer hoje?\n");
+  scanf("%i", &opcao);
+  //limpar o chat apos escolher a opção
+  system("clear");
+
+  switch (opcao) {
+  case 1:
+    printf("\n Cadastrar aluno");
+    cadastrar_aluno();
+    break;
+  case 2:
+    printf("\Remover aluno 2\n");
+    break;
+  case 3:
+    printf("\nAtualizar dados de um alun 3\n");
+    break;
+  case 4:
+    printf("\nListar alunos cadastrados 4\n");
+    break;
+  case 5:
+    printf("\n Listar alunos aprovados 5\n");
+    break;
+  case 6:
+    printf("\n Listar alunos reprovados por media\n");
+    break;
+  case 7:  
+    printf("\n Listar alunos reprovados por faltas \n");
+    break;
+  case 8:
+    printf("\nSaindo do sistema...\n");
+    break;
+  default:
+    printf("\nOpcao invalida. Tente novamente.\n");
+    //para dar tempo da pessoa ler a mensagem
+    sleep(2);
+    //reseta o menui
+    exibirMenu();
+    break;
+  }
+
+  void cadastrarAluno() {
+  if (n_alunos >= MAX_ALUNOS) {
+    printf("Erro: nao e possivel cadastrar mais alunos.\n");
+  }
+  int matricula;
+  printf("Digite a matricula do aluno: ");
+  scanf("%d", &matricula);
+    // Verificar se a matrícula já foi cadastrada
+  for (int i = 0; i < n_alunos; i++) {
+    if (matriculas[i] == matricula) {
+      printf("Erro: matricula ja cadastrada.\n");
+    }
+  }
+}
+  
+}
+  /*
+
+  // Função para remover um aluno
+  int removerAluno {
+      if (n_alunos == 0) {
+          printf("Erro: nenhum aluno cadastrado.\n");
+      }
+
+      int matricula;
+      printf("Digite a matricula do aluno a ser removido: ");
+      scanf("%d", &matricula);
+
+      int index = -1;
+      for (int i = 0; i < n_alunos; i++) {
+          if (matriculas[i] == matricula) {
+              index = i;
+              break;
+          }
+      }
+
+      if (index == -1) {
+          printf("Erro: matricula nao encontrada.\n");
+          return;
+      }
+
+      // Remover o aluno e reorganizar o vetor
+      for (int i = index; i < n_alunos - 1; i++) {
+          matriculas[i] = matriculas[i+1];
+          faltas[i] = faltas[i+1];
+          for (int j = 0; j < 4; j++) {
+              notas[i][j] = notas[i+1][j];
+          }
+      }
+      n_alunos--;
+      printf("Aluno removido com sucesso.\n");
+  }
+
+  // Função para atualizar os dados de um aluno
+    int atualizarDados() {
+      int matricula, i, encontrado = 0;
+      printf("\nDigite a matricula do aluno: ");
+      scanf("%d", &matricula);
+      for (i = 0; i < contador; i++) {
+          if (turma[i].matricula == matricula) {
+              encontrado = 1;
+              printf("\nDigite as notas do aluno (4 notas):\n");
+              scanf("%f %f %f %f", &turma[i].notas[0], &turma[i].notas[1],
+  &turma[i].notas[2], &turma[i].notas[3]); printf("\nDigite o numero de faltas
+  do aluno: "); scanf("%d", &turma[i].faltas); printf("\nDados do aluno
+  atualizados com sucesso."); break;
+          }
+      }
+      if (!encontrado) {
+          printf("\nAluno nao encontrado.");
+
+      }
+      return 0;
+  }
+
+    int listarAlunos{
+       printf("\nMatricula  |  Notas | Faltas\n");
+    }
+  */
